@@ -17,20 +17,47 @@
                 <nav class="header__menu">
                     <ul>
                         <button class="header__menu-close"></button>
-                        <li>
-                            <a href="#">Пристрої</a>
+                        <li class="header__menu-item--has-submenu">
+                            <a href="#prodinfo">Пристрої</a>
+                            <button class="header__submenu-toggle" type="button" aria-label="Показати пристрої"></button>
+                            <div class="header__submenu">
+                                <a class="header__submenu-item" href="index.html#prodinfo">
+                                    <div class="header__submenu-image">
+                                        <img src="img/prodinfo/prod-1.png" alt="">
+                                    </div>
+                                    <span class="header__submenu-name">Patio</span>
+                                </a>
+                                <a class="header__submenu-item" href="rechargeable.html#prodinfo">
+                                    <div class="header__submenu-image">
+                                        <img src="img/prodinfo/rechargble/prod-1.png" alt="">
+                                    </div>
+                                    <span class="header__submenu-name">Rechargeable</span>
+                                </a>
+                                <a class="header__submenu-item" href="portable.html#prodinfo">
+                                    <div class="header__submenu-image">
+                                        <img src="img/prodinfo/portable/prod-1.png" alt="">
+                                    </div>
+                                    <span class="header__submenu-name">Portable</span>
+                                </a>
+                                <a class="header__submenu-item" href="backpacker.html#prodinfo">
+                                    <div class="header__submenu-image">
+                                        <img src="img/prodinfo/backpacker/prod-1.png" alt="">
+                                    </div>
+                                    <span class="header__submenu-name">Backpacker</span>
+                                </a>
+                            </div>
                         </li>
                         <li>
-                            <a href="#">Картриджі</a>
+                            <a href="#changes">Картриджі</a>
                         </li>
                         <li>
-                            <a href="#">Де використовувати</a>
+                            <a href="#whereuse">Де використовувати</a>
                         </li>
                         <li>
-                            <a href="#">Де купити</a>
+                            <a href="#contacts">Де купити</a>
                         </li>
                         <li>
-                            <a href="#">FAQ</a>
+                            <a href="#faq">FAQ</a>
                         </li>
                     </ul>
                 </nav>
@@ -44,7 +71,7 @@
     </header>
 
     <main class="main">
-        <section class="hero">
+        <section class="hero" id="hero">
             <div class="container">
                 <div class="hero__inner">
                     <div class="hero__bg">
@@ -60,7 +87,7 @@
             </div>
         </section>
 
-        <section class="prodinfo prodinfo-backpacker" style="background: #EDEFF5;">
+        <section class="prodinfo prodinfo-backpacker" id="prodinfo" style="background: #EDEFF5;">
             <div class="container">
                 <div class="prodinfo__inner">
                     <div class="prodinfo__block">
@@ -162,7 +189,7 @@
             </div>
         </section>
 
-        <section class="howitworks">
+        <section class="howitworks" id="howitworks">
             <div class="container">
                 <div class="howitworks__inner">
                     <h2 class="howitworks__title">Як працює Patio Shield <br>Mosquito Repeller MR-PS</h2>
@@ -201,7 +228,7 @@
             </div>
         </section>
 
-        <section class="changes">
+        <section class="changes" id="changes">
             <div class="container">
                 <div class="changes__inner">
                     <h2 class="changes__title">Змінні картриджі до THERMACELL</h2>
@@ -253,11 +280,11 @@
             </div>
         </section>
 
-        <section class="imageblock">
+        <section class="imageblock" id="imageblock">
             <img src="img/imageblock/1.png" alt="">
         </section>
 
-        <section class="whereuse">
+        <section class="whereuse" id="whereuse">
             <div class="container">
                 <div class="whereuse__inner">
                     <h2 class="whereuse__title">Де використовувати <br>антимоскітні пристрої THERMACELL</h2>
@@ -321,7 +348,7 @@
             </div>
         </section>
 
-        <section class="contacts">
+        <section class="contacts" id="contacts">
             <div class="container">
                 <div class="contacts__inner">
                     <div class="contacts__top">
@@ -375,7 +402,7 @@
             </div>
         </section>
 
-        <section class="faq">
+        <section class="faq" id="faq">
             <div class="container">
                 <div class="faq__inner">
                     <h2 class="faq__title">Ми розуміємо що на сайті важко відповісти на всі питання. Тому ви можете їх поставити нашим менеджерам</h2>
@@ -430,19 +457,19 @@
                         <h4 class="footer__name">Продукти </h4>
                         <ul class="footer__menu">
                             <li>
-                                <a href="#">Patio</a>
+                                <a href="index.html#prodinfo">Patio</a>
                             </li>
                             <li>
-                                <a href="#">Rechargeable</a>
+                                <a href="rechargeable.html#prodinfo">Rechargeable</a>
                             </li>
                             <li>
-                                <a href="#">Portable</a>
+                                <a href="portable.html#prodinfo">Portable</a>
                             </li>
                             <li>
-                                <a href="#">Backpacker</a>
+                                <a href="backpacker.html#prodinfo">Backpacker</a>
                             </li>
                             <li>
-                                <a href="#">Картриджі</a>
+                                <a href="#changes">Картриджі</a>
                             </li>
                         </ul>
                     </div>
@@ -450,13 +477,13 @@
                         <h4 class="footer__name">Інформація</h4>
                         <ul class="footer__menu">
                             <li>
-                                <a href="#">Де використовувати</a>
+                                <a href="#whereuse">Де використовувати</a>
                             </li>
                             <li>
-                                <a href="#">Де купити</a>
+                                <a href="#contacts">Де купити</a>
                             </li>
                             <li>
-                                <a href="#">FAQ</a>
+                                <a href="#faq">FAQ</a>
                             </li>
                         </ul>
                     </div>
