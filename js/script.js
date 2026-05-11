@@ -307,30 +307,26 @@ jQuery(function ($) {
         $('body').addClass('bottomnav-active');
 
         var lastScrollY = window.scrollY;
+        $nav.addClass('is-visible');
 
         function update() {
             var y = window.scrollY;
             var vh = window.innerHeight;
             var docH = document.documentElement.scrollHeight;
-            var pastFirstScreen = y > vh * 0.9;
             var scrollingUp = y < lastScrollY - 1;
             var scrollingDown = y > lastScrollY + 1;
             var nearBottom = y + vh >= docH - 4;
 
-            if (!pastFirstScreen) {
-                $nav.removeClass('is-visible is-menu-open show-top');
-            } else {
-                if (scrollingUp || nearBottom) {
-                    $nav.addClass('is-visible');
-                } else if (scrollingDown && !$nav.hasClass('is-menu-open')) {
-                    $nav.removeClass('is-visible');
-                }
+            if (scrollingUp || nearBottom || y < 10) {
+                $nav.addClass('is-visible');
+            } else if (scrollingDown && !$nav.hasClass('is-menu-open')) {
+                $nav.removeClass('is-visible');
+            }
 
-                if (y > docH * 0.5 - vh) {
-                    $nav.addClass('show-top');
-                } else {
-                    $nav.removeClass('show-top');
-                }
+            if (y > docH * 0.5 - vh) {
+                $nav.addClass('show-top');
+            } else {
+                $nav.removeClass('show-top');
             }
 
             lastScrollY = y;
