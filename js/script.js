@@ -300,6 +300,96 @@ jQuery(function ($) {
         }
     });
 
+    (function initBottomNav() {
+        var $nav = $('.bottomnav');
+        if (!$nav.length) return;
+
+        $('body').addClass('bottomnav-active');
+
+        var lastScrollY = window.scrollY;
+
+        function update() {
+            var y = window.scrollY;
+            var vh = window.innerHeight;
+            var docH = document.documentElement.scrollHeight;
+            var pastFirstScreen = y > vh * 0.9;
+            var scrollingUp = y < lastScrollY - 1;
+            var scrollingDown = y > lastScrollY + 1;
+            var nearBottom = y + vh >= docH - 4;
+
+            if (!pastFirstScreen) {
+                $nav.removeClass('is-visible is-menu-open show-top');
+            } else {
+                if (scrollingUp || nearBottom) {
+                    $nav.addClass('is-visible');
+                } else if (scrollingDown && !$nav.hasClass('is-menu-open')) {
+                    $nav.removeClass('is-visible');
+                }
+
+                if (y > docH * 0.5 - vh) {
+                    $nav.addClass('show-top');
+                } else {
+                    $nav.removeClass('show-top');
+                }
+            }
+
+            lastScrollY = y;
+        }
+
+        var ticking = false;
+        $(window).on('scroll', function () {
+            if (!ticking) {
+                window.requestAnimationFrame(function () {
+                    update();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+        $(window).on('resize', update);
+        update();
+
+        $nav.on('click', '.bottomnav__menu-btn', function (e) {
+            e.stopPropagation();
+            $nav.toggleClass('is-menu-open');
+        });
+
+        $nav.on('click', '.bottomnav__top-btn', function () {
+            $nav.removeClass('is-menu-open');
+            $('html, body').animate({ scrollTop: 0 }, 500);
+        });
+
+        $nav.on('click', '.bottomnav__panel a', function (e) {
+            var href = $(this).attr('href') || '';
+            $nav.removeClass('is-menu-open');
+
+            var hashIdx = href.indexOf('#');
+            if (hashIdx === -1) return;
+            var hash = href.substring(hashIdx);
+            if (hash.length <= 1) return;
+
+            var path = href.substring(0, hashIdx);
+            var current = window.location.pathname.split('/').pop() || 'index.html';
+            var isSamePage = path === '' || path === current || (path === 'index.html' && current === '');
+            if (!isSamePage) return;
+
+            var $target = $(hash);
+            if (!$target.length) return;
+
+            e.preventDefault();
+            setTimeout(function () {
+                var top = $target.offset().top - 50;
+                $('html, body').animate({ scrollTop: top }, 400);
+            }, 200);
+        });
+
+        $(document).on('click', function (e) {
+            if (!$nav.hasClass('is-menu-open')) return;
+            if ($(e.target).closest('.bottomnav').length) return;
+            $nav.removeClass('is-menu-open');
+        });
+    })();
+
     $('.faq__block').on('click', '.faq__item-title', function () {
         var $item = $(this).closest('.faq__item');
         var $descr = $item.find('.faq__item-descr');
